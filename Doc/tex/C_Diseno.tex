@@ -1,0 +1,58 @@
+\apendice{Especificación de diseño}
+
+\section{Introducción}
+Este anexo va a describir la razón de ser del procedimiento que he seguido a la hora de organizar el proyecto. También se describirán las razones por las cuales se han tomado así las decisiones.
+\section{Diseño de datos}
+Ahora se explicarán como están implementados los datos en la base de datos en MySQL.
+\subsection{Tablas de la base de datos}
+Para guardar la información requerida de la API de Instagram usamos la base de datos con las relaciones de la siguiente manera:
+\imagen{diagramaDB.png}{Estructura de la Base de Datos}
+
+
+
+\begin{itemize}
+    \item Persona: Almacena las personas que van a formar la red.
+    \item Persona\_sigue: Almacena la relación de seguimiento entre usuarios.
+    \item Publicación: Almacena la publicación con la persona que la ha realizado. No se almacena la foto, solo la fecha y el texto a investigar.
+    \item Publicación\_Hashtag: Almacena la publicación con los diferentes hashtags que contenga.
+    \item Publicación\_like: Almacena la publicación con la gente de la red que haya interaccionando con ella dando un “me gusta”.
+\end{itemize}
+
+
+\section{Diseño procedimental}
+\imagen{diagrama-secuencia.png}{Diseño procedimental del diagrama de Secuencia}
+Como se puede observar, es un modelo secuencial que sigue siempre la misma dirección. Se ha intentado mantener una sencillez que ayude tanto al usuario como al programador que tenga que hacer uso de ella.
+A continuación, comienzo la explicación del proceso que se observa del diagrama:
+
+
+\begin{itemize}
+    \item 1 Se introducen los datos, tanto del usuario, como para la búsqueda y creación de la red.
+    \item 2 Se procede a la creación de la red.
+    \item 3 Se extraen los datos necesarios de la API y se almacenan en la base de datos de MySQL.
+    \item 4 Se analizan los datos globales de la base de datos.
+    \item 5 Se calculan las comunidades y se guardan los datos como csv.
+    \item 6 Se analizan los datos para obtener los resultados de las distintas comunidades.
+    \item 7 Se muestran los resultados en la web.
+\end{itemize}
+
+
+\section{Diseño arquitectónico}
+El código del programa se ha llevado a cabo dividiendo el programa en 3 partes:
+
+\begin{itemize}
+    \item Scripts principales: En los scripts principales están las principales funciones de creación de red, extracción de datos y análisis de los datos.
+\end{itemize}
+\imagen{scriptPython.PNG}{Estructura de los Scripts de Python}
+
+
+\begin{itemize}
+    \item Static: en este apartado están los estáticos que se van a usar en la web. Imágenes, datos en csv, fuentes, etc.
+\end{itemize}
+
+\imagen{static.png}{Estructura del directorio donde almacenar imagenes, csv, fuentes}
+
+\begin{itemize}
+    \item Templates: en este apartado se encuentra los archivos en HTML para poder mostrar la web.
+\end{itemize}
+
+\imagen{templates.PNG}{Estructura de los templates de la web}

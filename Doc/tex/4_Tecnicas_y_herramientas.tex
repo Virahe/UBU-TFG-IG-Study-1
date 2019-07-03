@@ -1,0 +1,194 @@
+\capitulo{4}{Técnicas y herramientas}
+
+Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. 
+Se comentarán los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y con referencias bibliográficas.
+
+\section{Técnicas de Desarrollo}
+\subsection{Metodología ágil}
+He decidido usar una metodología ágil para este proyecto. Hay bastantes motivos que he usado para decantarme por este tipo de metodologías:
+\begin{itemize}
+    \item El desarrollo es progresivo y admite muy bien la adaptación a posibles cambios. Se puede en-tregar el progreso al cliente después de cada fase dependiendo de esta.
+    \item Se comienza con unos objetivos y requisitos bajos sobre los que se construye el proyecto. A medida que se van cumpliendo objetivos se van incluyendo nuevos objetivos.
+    \item El que haya una comunicación con el cliente nos permite el que el resultado final sea lo esperado por el cliente puesto que da indicaciones y muestra los posibles cambios a realizar.
+    \item Nos permite buscar las fortalezas en los conocimientos de las personas implicadas más que en los procesos que hemos usado en el proyecto.
+    \item Es mejor tener una buena comunicación con el equipo de trabajo en vez de que la documenta-ción sea excesiva.
+    \item Los roles se pueden dividir bien entre las distintas personas que participan en el proyecto.
+\end{itemize}
+
+Solapar las fases de desarrollo en lugar de hacerlas de forma secuencial
+o en cascada. 
+
+\subsection{Scrum}
+Scrum es un marco de trabajo dentro de las metodologías ágiles, el cual vamos a usar. \cite{wiki:scrum}
+Existen tres roles principales que en este proyecto se dividen de manera un poco distinta a una empresa por la falta de personas a quien asignar los cargos:
+
+\begin{itemize}
+    \item Product Owner: es la persona que tiene la idea que quiere que se desarrolle. Suele ser el cliente que requiere que el producto se haga.
+    \item Se Scrum Master: Es el enlace que existe entre el Product Owner y el Equipo Scrum. Es una persona con experiencia que ayuda al entendimiento de ambas partes y las ayuda tanto a desarrollar y explicar bien sus ideas como a enfocar el trabajo.
+    \item Equipo Scrum: es el grupo de personas encargadas de llevar el proyecto adelante. Lo ideal es que el equipo sea de entre 5 a 9 personas y con distintas áreas de conocimiento abarca-das por estas personas. Las personas del equipo tienen que tener en mente que no trabajan individualmente para una mejor comunicación del desarrollo y que se lleve a cabo con fluidez.
+\end{itemize}
+
+Solapar las fases de desarrollo en lugar de hacerlas de forma secuencial
+o en cascada. 
+Como he explicado antes, en este proyecto el profesor será el Product Owner, el cliente, del pro-yecto. El alumno toma el rol de Equipo Scrum dado a que realizará el proyecto solo. El Scrum Master es un rol diluido entre el profesor y el alumno puesto que tienen que entenderse para saber bien cuales son los requisitos y cuales las metas del proyecto.
+El proyecto se dividirá en varios sprints, en los cuales al principio se dará una importancia máxima a la extracción de los datos que tarda varios días, pues de una buena primera fase dependerá el éxito de que nuestro proyecto llegue a buen puerto.
+Después se hará una investigación y paulatinamente se desarrollará la investigación y la aplicación web.
+
+
+\section{Lenguajes de programación} 
+\subsection{Python}
+Es un lenguaje de programación interpretado. Está muy extendido, por su facilidad para aprenderlo, ya que, según su filosofía, se hace un especial hincapié en una sintaxis que favorece el código legible.
+Ha sido utilizado Python como lenguaje de programación en la versión 2.7. Actualmente se encuentra en la versión 3.7. Se ha utilizado esa versión de Python porque es la que mejor congeniaba con todas las bibliotecas. Alguna biblioteca tarda un poco más en ser actualizada y de esta manera no había ningún problema.
+La razón por la que me he decantado por Python a la hora de elegirlo con lenguaje para el proyecto es por su facilidad de uso, la gran comunidad que hay detrás apoyándolo, es de código abierto y multiplataforma. 
+Elegí este lenguaje porque tiene una gran cantidad de librerías desarrolladas para el análisis de redes (Networkx, Python-louvain) y porque la API que uso para la extracción de los datos está desarrollada en python.
+\cite{python}
+
+
+\subsection{Flask}
+
+Flask es un framework minimalista escrito en Python que te permite crear aplicaciones web rápidamente y con un mínimo número de líneas de código. \cite{flask}
+He elegido este framework para el desarrollo de la aplicación Web donde muestro los datos por la facilidad de aprendizaje que presenta. Está basado en Python, lo cual me permite una gran conexión entre las distintas partes del proyecto.
+He elegido Flask por varios motivos:
+
+\begin{itemize}
+    \item No necesito crear un servidor web para tener la aplicación. Flask se ejecuta sobre el localhost.
+    \item Utiliza las mismas estructuras para cualquier proyecto y eso da sencillez para su uso.
+    \item Es open source, al igual que Python.
+    \item Me da compatibilidad con las distintas partes del proyecto al tenerlo en Python.
+    \item Me permite soportar alguna prueba unitaria.
+\end{itemize}
+
+\subsection{HTML}
+HTML es un lenguaje usado para la crear páginas web. \cite{wiki:HTML}
+Es conocido por su gran simplicidad y las grandes posibilidades que da cuando se junta con css y js. Admite muy bien el uso de posibles templates.
+Por el momento es el lenguaje más estandarizado para páginas web puesto que la mayoría de los navegadores han adoptado esta tecnología.
+He utilizado HTML para el desarrollo de la página web donde se muestra nuestra aplicación.
+
+\subsection{JSON}
+JSON (acrónimo de JavaScrip Object Notation) es un formato de texto ligero para el intercambio de datos. Es un formato de texto ligero para intercambio de datos. \cite{wiki:JSON}
+Es el formato que más se utiliza en las APIs cuando se usa el método GET. En la API utilizada nos devuelve los datos como ficheros JSON que hay que pasar una base de datos primeramente para su almacenamiento, y a csv después para el estudio de Networkx.
+
+\imagen{JSON.PNG}{Archivo JSON que nos devuelve la API}
+
+\subsection{MYSQL}
+MySQL es un sistema de gestión de bases de datos relacional desarrollado bajo licencia dual GPL/Licencia comercial por Oracle Corporation y está considerada como la base datos open source más popular del mundo, y una de las más populares en general junto a Oracle y Microsoft SQL Server, sobre todo para entornos de desarrollo web. \cite{mysql}
+
+No se requiere la instalación de ningún software específico, sino que desde línea de comandos puede ser manejada.
+Permite una muy buena integración con Python. Se ha utilizado la mysql.connector.
+
+\section{Entornos de Desarrollo}
+\subsection{Sublime Text}
+Sublime Text 3 es un editor de código, escrito en Python y C++, que abarca gran cantidad de lenguajes de programación. Cambia la interfaz dependiendo del lenguaje usado, lo cual facilita la escritura del lenguaje usado.
+Para facilitar el desarrollo de un proyecto, admite la instalación de diferentes plug-ins.
+Aunque fue la primera opción de desarrollo de mi código, al poco de empezar vi que tenía otras necesidades que eran satisfechas por IDEs más específicos para Python. Esto ocurre al desarrollar un proyecto tan enfocado a un solo lenguaje de programación. Como dice el dicho, el que mucho abarca poco aprieta, y este caso así fue.
+\subsection{PyCharm}
+PyCharm es un entorno de desarrollo (IDE) específico para Python desarrollado en la republica checa. Pertenece a la empresa JetBrains. 
+Tiene una gran posibilidad de elegir herramientas que ayudan al buen desarrollo de la aplicación, tales como:
+\begin{itemize}
+    \item Escritura.
+    \item Revisión.
+    \item Comentarios.
+    \item Ejecutar el programa en línea de comandos propia.
+    \item Instalación de frameworks específicos.
+\end{itemize}
+Con la licencia de estudiante de manera gratuita y siendo el IDE que mejor se adaptaba a mi proyecto, terminé decantándome por esta herramienta.
+\subsection{Bash}
+Bash es un programa informático, que tiene como función el interpretar las distintas órdenes sobre la consola.
+Para la extracción de datos se ha montado un servidor en un ordenador personal en casa para tenerlo encendido durante los días que durase la extracción. El servidor corre con un Linux.
+
+\subsection{Jupyter Notebook}
+Jupyter es una aplicación de código abierto sobre un explorador web. que permite la creación de programas en Python. Permite dividir el programa en distintas partes para irlo corriendo por separado. Es muy usado en la educación porque puedes enseñar distintas cosas en un solo fichero.
+La mayoría de la gente lo usa para testear distintos problemas que puede dar un programa. La ejecución por piezas simula una ejecución en vivo.
+Se instala junto con Anaconda o desde la línea de comando con pip.
+\subsection{Google Colaboratory}
+Colaboratory es un programa Web que pertenece al motor de búsqueda de Google. El funcionamiento es parecido a Jupyter Notebook. Las ventajas de Colaboratory, son que funciona sobre Drive, en un ordenador de sus servidores, por lo tanto, no necesita de instalación y puedes acceder a tus proyectos desde cualquier sitio. Se guarda todo en Drive.
+Se ha usado porque ciertos cálculos requerían de mayor fuerza de computación que no tenía en el ordenador personal.
+
+\subsection{Gephi}
+Software de código abierto desarrollado en Java que se utiliza para el estudio de redes. Se caracteriza por la falta de necesidad a la hora de programar y por la buena visualización de la red que ofrece. 
+Se pueden elegir distintas características para el estudio tales como:
+\begin{itemize}
+    \item Apariencia
+    \item Distribución
+    \item Grafo
+    \item Contexto
+    \item Filtros
+    \item Estadísticas
+\end{itemize}
+
+\section{Administrados de Paquetes}
+\subsection{Pip}
+Pip pertenece al software Python. Es el encargado de administrar e instalar los distintos paquetes y funciones que queramos obtener junto con Python.
+Se usa en la línea de comandos, con un funcionamiento similar al que se usa con el APT-GET en Linux.
+Tiene cuatro posibilidades a la hora de usarlo:
+
+\begin{itemize}
+    \item Instalar.
+    \item Instalar una lista de requerimientos.
+    \item Instalar un paquete específico para una versión de Python, quitando la versión que tuviéramos en nuestro ordenador.
+    \item Desinstalar un paquete.
+\end{itemize}
+En los gits de internet muchas veces la gente pone los requerimientos en una lista para facilitar a la gente con el git los nombres y que lo puedan instalar automáticamente.
+
+\section{Herramientas de Documentación}
+\subsection{Libre Office}
+Libre Office es un software de código abierto que se utiliza para crear documentos escritos. Se ha optado para usar esta herramienta para facilitar la corrección de errores en la documentación. Da facilidades tales como escribir notas en las páginas, y así, cuando no sea posible una reunión presencial con los tutores, estos puedan ir aportando las anotaciones pertinentes.
+\subsection{LaTeX}
+LaTeX es un sistema de composición de textos, orientado a la creación de documentos escritos que presenten una alta calidad tipográfica. Por sus características y posibilidades, es usado de forma especialmente intensa en la generación de artículos y libros científicos que incluyen, entre otros elementos, expresiones matemáticas. LaTeX es un sistema de composición de textos, orientado a la creación. \cite{latex}
+LaTeX se usará para la maquetación final del proyecto. La he elegido por la gran calidad que ofrece a la hora de imprimir tanto la memoria como los anexos.
+\subsection{Texmaker}
+Texmaker es uno de los editores gratuitos que existen para LaTeX. Ofrece casi todas las herramientas necesarias para una buena edición del documento que estemos escribiendo.
+Texmaker es un editor gratuito distribuido bajo la licencia GPL. \cite{Texmaker}
+\subsection{Zotero}
+Zotero es un programa de gestión de enlaces bibliográficos.
+Funciona instalando un plugin en nuestro ordenador y cuando vemos un artículo que nos interesa lo marcamos. Cuando hacer el informe, o memoria en este caso, con un plug-in en el editor de texto, se encarga automáticamente de insertar las referencias a las paginas previamente guardadas.
+
+\section{Bibliotecas}
+\subsection{Instagram-API-python}
+Es un proyecto desarrollado por LevPasha. Tiene una licencia MIT. 
+Esta biblioteca nos acerca la interacción con la API de Instagram a Python. Está basado en un proyecto anterior de PHP aunque en este caso es todo Python.
+La hemos elegido por lo bien que se adapta a nuestros requisitos para la extracción de los datos.
+\subsection{Networkx}
+Social network analysis software (SNA software) \cite{networkx}
+Es un software de análisis de Redes Sociales. Funciona en Python. Es muy conocido y usado por su versatilidad y por el gran número de algoritmos que lleva integrados.
+Se usa como base para el estudio de los datos, una vez obtenidos estos.
+
+\subsection{Python-Louvain}
+Es una biblioteca paralela a Networkx que aplica el algoritmo de Louvain. 
+Sirve para aplicar un algoritmo muy especifico de clustering de grandes redes. Por grandes redes se entiende que tiene al menos varios miles de nodos. Sus desarrolladores teóricos son: Vincent D Blondel, Jean-Loup Guillaume, Renaud Lambiotte, Renaud Lefebvre en Journal of Statistical Mechanics: Theory and Experiment 2008. El desarrollo de la versión de Python para que fuese unida a Networkx es de Thomas Aynaud .
+El repositorio de Github es: https://github.com/taynaud/python-louvain
+La documentación se encuentra en: https://python-louvain.readthedocs.io/en/latest/
+
+\section{Herramientas para el control de versiones}
+\subsection{Git}
+Git es un sistema para el control de versiones.
+El control de versiones se caracteriza porque nos permite regresar a algún punto anterior en el tiempo del proyecto. En el supuesto de que hubiera algún problema en el proyecto, podríamos ver el cuándo y el por qué se hicieron tales casos. En un caso extremo, trabajar en una línea paralela desde ese punto avanzando. Así podemos evitar pérdidas de informaciones.
+En la actualidad es el sistema más utilizado gracias a su simplicidad y la eficiencia que muestra.
+La licencia que usa es de software libre GNU LGPL v2.1
+\subsection{Github}
+Github es una plataforma online que alberga proyectos desarrollados mediante un sistema de control de versiones git.
+Existen alternativas tan potentes come Github, tales como Bitbucket y Gitlab. Sin embargo, me he decantado por ella por la simplicidad que ofrece, por la familiarización previa que ya tenía de varias asignaturas durante la carrera y porque permite integrar extensiones paralelas que mejoran su funcionamiento.
+Es una aplicación gratuita para todos los proyectos de código abierto, aunque existe una versión Pro de pago con más privilegios. Esta versión extendida es la que voy a usar puesto que la dejan gratuita para estudiantes y docentes.
+Hay cuatro elementos básicos que conocer de la página con los que es conveniente familiarizarse, puesto que han sido usados bastante en el proyecto:
+\begin{itemize}
+    \item Milestones: Son distintos momentos importantes marcados en el proyecto. En mi caso marcaran los distintos Sprints.
+    \item Issues: Son tareas asociadas al Milestone (Sprint) que hay que hacer.
+    \item Commits: Son actualizaciones en el proyecto que subimos al git para tener las distintas versiones. Sirve tanto para añadir distintos elementos, como para modificarles o eliminarles. Cada vez que una tarea se resuelve se puede ir actualizando.
+    \item Forks: Son bifurcaciones en un punto del proyecto para trabajar sobre el de manera paralela. A veces se hacen para tener solo el punto de partida igual y después desarrollar distintas cosas. Otras veces es el mismo equipo el que hace el fork para resolver algún problema y cuando lo tiene resuelto lo unen al árbol principal del que se separaron.
+\end{itemize}
+\subsection{GitKraken}
+Es una aplicación de escritorio que está conectado con Github.
+Permite de manera muy sencilla el hacer los commits, ocupándose ello de actualizar los ficheros. Permite el escribir un título al commit y una descripción.
+Tiene una parte gráfica que nos muestra la línea temporal de los commits, cada persona que lo hizo y las distintas bifurcaciones.
+Se puede pedir que nos descargue todo el proyecto tal y como estaba en algún commit de manera muy sencilla. 
+\subsection{Zenhub}
+Zenhub es una extensión que existe para varios exploradores web. En mi caso uso la que existe para el motor de Mozilla.
+Es una forma gráfica de aplicar la metodología Scrum tal y como lo haríamos en una pared. Lo bueno de usar esta extensión es que a medida que vas moviendo las tareas por la pantalla, lo va actualizando en el repositorio.
+La elección de esta herramienta ha sido por considerarla casi un obligado en la gestión del proyecto con una metodología ágil como Scrum.
+
+\section{Herramientas de diseño gráfico}
+\subsection{Gimp}
+Gimp es un software profesional de edición gráfica. Se uso principalmente para el diseño de gráficas y retoque fotográfico. Es el rival directo de Photoshop, pero de código abierto. 
+La elección se ha basado en el precio desorbitado de la licencia para un uso no profesional, y en el conocimiento previo que tenía de él.
+Se ha usado en el proyecto para el diseño del poster final y del logo del proyecto.
+

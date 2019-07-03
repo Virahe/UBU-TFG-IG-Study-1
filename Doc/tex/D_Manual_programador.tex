@@ -1,0 +1,91 @@
+\apendice{Documentación técnica de programación}
+
+\section{Introducción}
+Este anexo va a describir la documentación referente a la programación. Se incluirá también la instalación necesaria de todos los componentes para poder seguir desarrollando el proyecto.
+\section{Estructura de directorios}
+A continuación, se van a mostrar los directorios de este proyecto que están en el directorio raíz.
+
+\imagen{directorios.png}{Estructura de los directorios del proyecto}
+
+
+\section{Manual del programador}
+En este apartado se facilitarán los programas y librerías que son necesarios para seguir con el desarrollo del proyecto.
+Para trabajar con este proyecto son necesarios los siguientes programas y librerias:
+\begin{itemize}
+    \item Pycharm
+    \item Python
+    \item Pip
+    \item Instagram-API-python
+    \item Networkx
+    \item Python-Louvain
+    \item Flask
+\end{itemize}
+
+
+\subsection{Instalación de PyCharm}
+Pycharm ha sido el IDE que se eligió para programar los scripts de nuestro proyecto. Para la instalación hay que descargarse el software desde su página web \cite{pycharm} eligiendo la versión que queramos instalar.
+Gracias a la cuenta de la Universidad de Burgos, con la cuenta universitaria podemos descargarnos la versión profesional de manera gratuita, aunque la versión gratuita también puede usarse.
+\imagen{pycharm.png}{Modelo que vamos a elegir de PyCharm}
+
+Cuando esté descargado, solo es seguir el instalador que no requiere de ningún conocimiento técnico, solo seguir los pasos.
+
+\subsection{Python}
+Python es el lenguaje principal sobre el que se programa todo el proyecto. Esto requiere que sea imprescindible que se tenga instalado para poder seguir con el proyecto. Se ha utilizado la versión 2.7.15. En el momento de la entrega del proyecto hay versiones más avanzadas, sin embargo, esta cumplía con todos los requisitos necesarios para el uso de las librerías.
+Para instalarlo hay que ir a la pagina oficial de Python\cite{python} elegir el sistema operativo con el que se va a trabajar y la versión que queramos utilizar. Una vez descarguemos el asistente de instalación, solo habría que ejecutarlo y seguir los pasos que se indiquen.
+
+\subsection{Pip}
+Pip es una herramienta que proporciona Python que ayuda sobremanera en la instalación, actualización y desinstalación de bibliotecas desde línea de comandos. Las librerías que se van a usar van a ser descargadas usando pip, por lo tanto, en caso de que no se haya instalado de manera automática con Python, es muy recomendable descargarlo.
+
+\subsection{Instagram-API-Python}\cite{git-API-python}
+Instagram-API-Python es la biblioteca que nos acerca la api de Instagram a Python y va a ser usado para la creación de la red y extracción de la información. Es requerida para esos 2 primeros pasos y se instala escribiendo en la línea de comandos:
+
+\begin{itemize}
+    \item pip install InstagramApi
+\end{itemize}
+
+para su uso en los script de Python hay que importar escribiendo:
+
+\begin{itemize}
+    \item from InstagramAPI import InstagramAPI
+\end{itemize}
+
+\subsection{Networkx}\cite{networkx}
+Instagram-API-Python es la biblioteca que nos acerca la api de Instagram a Python y va a ser usado para la creación de la red y extracción de la información. Es requerida para esos 2 primeros pasos y se instala escribiendo en la línea de comandos:
+
+\begin{itemize}
+    \item pip install networkx
+\end{itemize}
+
+\subsection{Python-Louvain}\cite{python-louvain}
+Es una biblioteca que funciona como adjunta de Networkx y que nos permite hacer la división clustering. Podría hacerse división usando otro método, pero como este es el que hemos elegido, se requiere de esta biblioteca paralela.
+Para su instalación basta con escribir en la línea de comandos:
+
+\begin{itemize}
+    \item pip install python-louvain
+\end{itemize}
+
+\subsection{Flask}
+Flask es el framework que se va a utilizar para la web que se encarga de mostrar los resultados finales. En caso de que se quiera hacer algún cambio o correrlo hay que tenerlo instalado. Su instalación es sencilla. Basta con escribir en la línea de comandos:
+
+\begin{itemize}
+    \item pip install Flask
+\end{itemize}
+
+
+\section{Compilación, instalación y ejecución del proyecto}
+Para la ejecución del proyecto es necesario descargarse el proyecto del repositorio de Github, donde está alojado.Para acceder al repositorio solo hay que acceder al siguiente enlace (ZOTERO). A continuación, pulsaremos el botón verde de la parte de la derecha que dice “Clone or download”
+Salvo que tengamos la opción de clonar el git, particularmente me parece más simple descargar el zip.
+\subsection{Instalación}
+Este proyecto no requiere instalación más allá de tener todas las librerías necesarias instaladas previamente para su uso.
+
+\subsection{Ejecución}
+Para la ejecución he dividido las distintas fases en distintos directorios.
+Hay que ejecutar cada archivo de Python por orden, pero previamente hay que introducir el usuario de Instagram que se vaya a usar, el termino de búsqueda de las descripciones y la base de datos.
+Para la extracción de los datos del mysql a CSV hay que escribir como administrador el siguiente comando en mysql:
+\begin{itemize}
+    \item select IDseguidor, IDseguido from persona\_sigue into outfile '/var/lib/mysql-files/prueba.csv' fields enclosed by '/' terminated by ';' escaped by '"' LINES terminated by '/r/n';
+\end{itemize}
+
+Hay que tener en cuenta que los archivos que se necesiten a la hora de correr los scripts estén en el mismo directorio que se vaya a ejecutar.
+
+

@@ -1,0 +1,146 @@
+\apendice{Especificación de Requisitos}
+
+\section{Introducción}
+Este anexo va a describir y formalizar los requisitos que debe de cumplir nuestra herramienta software en cuanto a funcionalidad se respecta.
+\section{Objetivos generales}
+Los objetivos generales del producto son:
+\begin{itemize}
+    \item Obtención de la red
+    \item Estudio de los usuarios
+    \item Implementación de una web para mostrar resultados
+\end{itemize}
+
+
+
+\section{Catalogo de requisitos}
+Los requisitos se dividen en dos tipos:
+\subsection{Requisitos Funcionales:}
+\begin{itemize}
+    \item RF1. Crear perfil en Instagram
+    \item RF2. Usar el perfil para loguearse
+    \item RF3. Crear red de usuarios a estudiar
+    \item RF4. Guardar datos en la Base de Datos
+    \item RF5. Realizar división por comunidades
+    \item RF6. Búsqueda de Usuarios relevantes
+\end{itemize}
+
+\subsection{Requisitos no Funcionales:}
+\begin{itemize}
+    \item RNF1. Modularidad: El software puede ser continuado por otro alumno, por lo cual debe de ser modular.
+    \item RNF2. Visibilidad: La web que enseña los datos debe de mostrar bien los datos, de manera intuitiva y explicativa
+\end{itemize}
+
+
+\subsection{Catálogo de requisitos:}
+
+\subsubsection{Caso de uso 1:}
+\begin{itemize}
+\item Crear perfil en Instagram
+\item Descripción: El usuario debe de crear un perfil en Instagram
+\item Requisitos: Ninguno
+\item Precondiciones: Tener un correo electrónico y conexión a internet
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Entrar en la página de Instagram 
+    \item 2	Darse de alta con un correo electrónico
+\end{itemize}
+\item Postcondiciones: Se obtiene una manera de continuar en Instagram haciendo uso de su API
+\item Excepciones: Tener un usuario previamente
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios:Ninguno
+\end{itemize}
+
+\subsubsection{Caso de uso 2:}
+\begin{itemize}
+\item Usar perfil de IG para loguearse
+\item Descripción: El usuario debe insertar el usuario y contraseña en los scripts para poder hacer uso del proyecto
+\item Requisitos: RF1
+\item Precondiciones: Ninguna
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Entrar en los scripts 
+    \item 2	Escribir el usuario y contraseña
+\end{itemize}
+\item Postcondiciones: Se puede hacer uso de los distintos procesos implementados
+\item Excepciones: Ninguna
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios:Ninguno
+\end{itemize}
+
+\subsubsection{Caso de uso 3:}
+\begin{itemize}
+\item Creación de la red de usuarios
+\item Descripción: El usuario debe insertar los valores que van a buscarse en las descripciones para buscar personas que lo cumplan
+\item Requisitos: RF2
+\item Precondiciones: Tener agregados previamente a 5 personas que vayan a estar en la red para tener un punto para comenzar la búsqueda.
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Entrar en los scripts 
+    \item 2	Escribir la lista de términos que van a buscarse
+    \item 3	Correr el Script durante un tiempo largo
+\end{itemize}
+\item Postcondiciones: Se seguirá a las personas que cumplen los requisitos con nuestra cuenta de Instagram
+\item Excepciones: Ninguna
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios: Puede entrarse en la cuenta de Instagram para ver cuántas personas se han agregado para poder parar el script cuando sean suficientes. Puede durar días este paso.
+\end{itemize}
+
+
+\subsubsection{Caso de uso 4:}
+\begin{itemize}
+\item Guardar datos en la base de datos
+\item Descripción: El usuario debe de correr la aplicación encargada de ver las publicaciones de la gente de la red obteniendo la información.
+\item Requisitos: RF2, RF3
+\item Precondiciones: Tener instalado Mysql
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Ejecutar el script
+\end{itemize}
+\item Postcondiciones: Ninguna
+\item Excepciones: Tener un usuario previamente
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios: El tiempo requerido va a ser proporcional al número de publicaciones de los usuarios y número de usuarios en sí.
+\end{itemize}
+
+
+\subsubsection{Caso de uso 5:}
+\begin{itemize}
+\item Dividir por comunidades
+\item Descripción: El usuario debe de correr la aplicación encargada de marcar las comunidades encontradas en la red.
+\item Requisitos: RF4
+\item Precondiciones: Tener los datos en CSV
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Ejecutar el script teniendo los datos en la misma ubicación del programa
+\end{itemize}
+\item Postcondiciones: Se obtiene una manera de continuar en Instagram haciendo uso de su API
+\item Excepciones: Tener un usuario previamente
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios:Ninguno
+\end{itemize}
+
+
+\subsubsection{Caso de uso 6:}
+\begin{itemize}
+\item Búsqueda de Usuarios relevantes 
+\item Descripción: Se obtendrá una lista con los usuarios más relevantes de la red y comunidades
+\item Requisitos: RF2, RF3
+\item Precondiciones: Usar Google Colab
+\item Secuencia normal 	Paso	 Acción
+\begin{itemize}
+    \item 1	Subir el notebook a google colab
+    \item 2	Ejecutar el Notebook y seguir los pasos que nos va indicando
+\end{itemize}
+\item Postcondiciones: Ninguna
+\item Excepciones: Ninguna
+\item Importancia: Alta
+\item Urgencia: Alta
+\item Comentarios:Ninguno
+\end{itemize}
+
+

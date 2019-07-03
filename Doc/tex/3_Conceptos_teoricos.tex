@@ -1,0 +1,77 @@
+\capitulo{3}{Conceptos teóricos}
+
+Para una completa compresión del proyecto hay que tener claros y entender algunos conceptos. A continuación, voy a explicar los más importantes:
+
+\section{Instagram}
+
+Red Social bastante reciente que es mayormente utilizada por una generación joven.
+Tiene un enfoque para los dispositivos móviles. Aunque existe una versión de servidor web, no permite todas las opciones. Las acciones principales que se pueden realizar son:
+\begin{itemize}
+    \item Subir una fotografía con un pie de foto.
+    \item Dar un “me gusta” a la fotografía.
+    \item Dejar comentarios en las fotos.
+    \item Escribir Hashtags que pueden ayudar a encontrar temas relacionados
+\end{itemize}
+    
+\imagen{foto1ig.png}{Foto, con pie de foto, hashtags y personas que han dado me gusta}
+\begin{itemize}
+
+    \item Tener una descripción sobre nuestra persona.
+    \item Seguir a gente y que nos sigan.
+    \item Posibilidad de hacer privado el perfil para tener dominio sobre quien puede seguirnos y ver las fotos que hemos subido.
+    
+\end{itemize}
+\imagen{foto2ig.png}{Ejemplo de Perfil, con descripción de perfil y seguidores y seguidos}
+ 
+\section{Teoría de grafos} 
+Es una rama de las matemáticas y las ciencias de la computación que estudia las propiedades de los grafos.
+Formalmente, un grafo G = (V,E) es una pareja ordenada en la que V es un conjunto no vacío de vértices y E es un conjunto de aristas. Donde E consta de pares no ordenados de vértices, tales como {x, y}E entonces se dice que X e Y son adyacentes; y en el grafo se representa mediante una línea no orientada que una dichos vértices. Si el grafo es dirigido se le llama dígrafo, se denota D, y entonces el par (X, Y)es un par ordenado, esto se representa con una flecha que va de X a Y y se dice que (X,Y) E.
+Existen varios tipos de Grafos: \cite{wiki:caracterizacion}
+
+\begin{itemize}
+    \item Grafos Simples: Un grafo es simple si a lo sumo existe una arista uniendo dos vértices cualesquiera.
+    \item Multigrafo: Tiene aristas multiples
+    \item Grafos conexos: Un grafo es conexo si cada par de vértices está conectado por un camino; es decir, si para cualquier par de vértices (a, b), existe al menos un camino posible desde a hacia b.
+    \item Grafos completos: Un grafo es completo si existen aristas uniendo todos los pares posibles de vértices.
+    \item Grafos bipartitos: sus vértices son la unión de dos grupos de vértices.
+    \item Árboles: Un grafo que no tiene ciclos y que conecta a todos los puntos.
+    \item Grafos ponderados o etiquetados: Cada arista tiene un peso específico.
+    \item Diámetro: es la mayor distancia entre todos los pares de puntos de la misma.
+\end{itemize} 
+En las redes sociales, el estudio se centra en la asociación y medida de las relaciones y flujos entre las personas, grupos, organizaciones, computadoras, sitios web, así como cualquier otra entidad de procesamiento de información/conocimiento. Los nodos en la red en este caso son personas y grupos mientras que los enlaces muestran relaciones o flujos entre los nodos. El análisis de redes sociales proporciona herramientas tanto visuales como matemáticas para el estudio de las relaciones humanas.
+
+\section{Pagerank} 
+Pagerank es un algoritmo utilizado para dar una importancia a un nodo en una red, dependiendo tanto de los conectores de entrada como de salida.
+\imagen{formula.png}{Fórmula del PageRank básica}
+\begin{itemize}
+    \item PR(A) es el PageRank de la página A.
+    \item d es un factor de amortiguación que tiene un valor entre 0 y 1.
+    \item PR(i) son los valores de PageRank que tienen cada una de las páginas i que enlazan a A.
+    \item C(i) es el número total de enlaces salientes de la página i (sean o no hacía A).
+\end{itemize}
+El primer documento sobre el proyecto, que describe el PageRank y el prototipo inicial del motor de búsqueda de Google, se publicó en 1998. Sus propiedades son muy discutidas por los expertos en optimización de motores de búsqueda. \cite{wiki:pagerank}
+Nosotros lo vamos a utilizar para ver quién es la persona más importante dependiendo de cómo dividamos el grupo y sobre cual es sobre la que querríamos hacer las propuestas para llegar mejor a la gente.
+
+\section{Modularidad} 
+La modularidad de un vértice en un grafo cuantifica qué tanto está de agrupado (o interconectado) con sus vecinos. Se puede decir que si el vértice está agrupado como un clique (grafo completo) su valor es máximo, mientras que un valor pequeño indica un vértice poco agrupado en la red. Se suele representar formalmente como Ci. \cite{wiki:modularity}
+Muchas redes complejas tienen una estructura modular subyacente, es decir, subunidades estructurales (comunidades o grupos) caracterizada por nodos altamente interconectados. La modularidad se ha introducido como una medida para evaluar la calidad de clusterizations. \cite{wiki:clustering}
+
+Existen distintos tipos de algoritmos para buscar una mejor optimización de la modularidad \cite{wiki:clusteringAlgorithms}:
+
+\begin{itemize}
+    \item Método del mínimo corte
+    \item Algoritmo de Girvan-Newman
+    \item Louvain
+    \item Métodos basados en el Clique
+\end{itemize}
+
+En este proyecto se va a utilizar el método de Louvain (Blondel) para calcular la modularidad y dividir el grafo. Se usa este método por el gran tamaño que presenta. Su O grande es de O (n log n)
+Es un método que utiliza una heurística para calcular una buena modularidad en redes de gran tamaño. \cite{blondel}
+
+Con la modularidad vamos a ser capaces de distinguir los distintos comunidades que existen en Burgos a grandes rasgos, por la gran interconexión de sus nodos (personas)
+
+
+
+
+
+

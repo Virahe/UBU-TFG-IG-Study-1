@@ -1,0 +1,50 @@
+\apendice{Documentación de usuario}
+
+\section{Introducción}
+Este anexo va a describir la documentación referente a la ejecución de la aplicación desde el punto de vista del usuario.
+\section{Requisitos de usuarios}
+Los requisitos mínimos para poder usar la aplicación son:
+\begin{itemize}
+    \item Tener instalado Python 2.7
+    \item Tener instaladas las bibliotecas Instagram-API-python, Networkx y Python-Louvain. En el anexo anterior se explica cómo se pueden conseguir dichas librerías.
+    \item Tener conexión a internet.
+    \item Tener una cuenta de Instagram con un mínimo de 5 personas seguidas que vayan a estar dentro de nuestra red.
+    
+\end{itemize}
+
+\section{Instalación}
+Para ejecutar la aplicación no es necesario cumplimentar una instalación tradicional, sino que con una descarga del repositorio de GitHub y ejecución de los distintos Scripts valdría.
+\section{Manual del usuario}
+Hay que cumplimentar unos pequeños pasos antes de ejecutar cada Script.
+\subsection{NetCreator}
+Requiere que se introduzca el usuario y contraseña de la cuenta de Instagram, así como las palabras claves que se quieren buscar para crear la red. Este primer paso lleva de varios días sí
+\imagen{netcreator.png}{Login requerido}
+\subsection{InsertFriends}
+Requieres tanto el usuario y la contraseña de instagram como las que se refieren a MySQL, que es donde guardaremos la información que extraigamos.
+\imagen{insertfriends.png}{Conexión a la base de datos}
+\subsection{InsertFriendship}
+Al igual que InsetFriends, necesitamos introducir el usuario y contraseña del Instagram y de MySQL.
+Después de extraer la información de la API hay que configurar los datos como un CSV para que pueda leerlos bien Networkx. Para eso, se extraen desde la línea de comandos de la siguiente forma:
+\begin{itemize}
+    \item '/var/lib/mysql-files/prueba.csv' fields enclosed by '"' terminated by ';' escaped by '"' LINES terminated by '/r/n';
+\end{itemize}
+
+
+\subsection{Partition}
+Partition es un script que no requiere de ningún cambio y que puede ejecutar sin problemas una vez hayamos cumplimentado todos los scripts anteriores.
+
+\subsection{AnalizeCommunities}
+Este es un notebook de Python que en vez de hacerlo un script como los anteriores, hay que subirlo a colab.research.google.com , puesto que necesita de mayores recursos que lo que normalmente se tiene en un ordenador personal. Nos requiere en el primer paso que le introduzcamos los csv de las particiones y al final nos devuelve los datos para descargar.
+
+\subsection{Flask}
+Para ejecutar Flask hay que escribir en la línea de comandos (desde Windows) hay que ir a la carpeta de ProyectoUBU dentro de flask y con botón derecho+mayusc abrir una powershell y escribir los 2 siguientes comandos:
+
+\begin{itemize}
+    \item set FLASK\_APP=flaskr
+    \item flask run
+\end{itemize}
+
+Después abrir un navegador e ir a la página por defecto que es http://127.0.0.1:5000/
+\imagen{flask.png}{Información mostrada al iniciar la web con Flask}
+
+Se adjunta un video junto con los anexos que puede verse por si existieran dudas sobre la ejecución del programa.

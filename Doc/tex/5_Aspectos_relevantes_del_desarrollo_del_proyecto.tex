@@ -1,0 +1,151 @@
+\capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
+
+En este apartado se van a mostrarlos puntos más relevantes del ciclo de vida de este proyecto. Se detallarán como se han realizado y resuelto los distintos problemas y dificultades que han ido surgiendo a medida que se iba avanzando en el desarrollo del proyecto.
+Se dividirá este capítulo en varias secciones en el periodo temporal. Se explicará el porqué de las decisiones tomadas.
+
+
+\section{Definición del proyecto}
+La propuesta del proyecto se les realizó a los tutores que ayudaron a la matización del mismo. En un par de tutorías fueron cincelados detalles importantes sobre el enfoque de este. Al final se concluyó que queríamos conseguir:
+\begin{itemize}
+	\item Un estudio de Instagram: Puesto que tanto Twitter, como Facebook han sido base de muchísimos estudios dado su magnitud durante muchos años, queríamos hacerlo sobre Instagram porque encontramos muy pocas investigaciones. Esto se debe a que, aunque lleva unos años en el mercado, ha sido en estos últimos años cuando a sufrido una gran subida de los números en lo que usuarios se refiere.
+	\item Una aplicación web que ofrezca un estudio de una red con unas características específicas a posibles empresas que quieran hacer propuestas comerciales exitosas. Con un estudio minucioso de la red puede ofrecer de una determinada manera más especializada un producto, adaptándose a:
+	\begin{itemize}
+	    \item Hashtags: Muestran una forma de hablar especifica de un grupo altamente conectado. También nos muestran sus intereses particulares.
+	    \item Personas influyentes: No necesariamente la persona con mayor numero de seguidores es la más influyente. Abordar a las personas influyentes por comunidades ofrece ventajas de cercanía y abaratamiento de los costes de contratación para la promoción de nuestro producto.
+    \end{itemize}
+\end{itemize}
+
+Para llevar estos puntos a cabo tenía que satisfacer 5 tareas principales:
+\begin{itemize}
+	\item Creación general de la red: Creación de una red para estudiar con los suficientes nodos como para que diera juego a la hora de hacer una investigación sobre ella. La red debía ser de gente de Burgos (incluyendo la provincia) y gente que estudie en la Universidad de Burgos.
+	\item Estudio por comunidades: Hacer una división por comunidades, sin puntualizar aún que algoritmo se iba a usar. Al no conocer la red era muy complicado estimar cual iba a ser el más efectivo algoritmo de clustering más efectivo.
+	\item Estudio de los hashtags: Se propusieron diferentes posibles estudios en este punto, aunque el éxito de alguno de ello dependía mucho de una posible extracción de datos durante un periodo de tiempo bastante que al final fue inviable y quedará como posible línea futura de estudio.
+	\item Búsqueda de los usuarios más relevantes: con la red definida, hacer una investigación de los usuarios más relevantes a los que poder hacer una propuesta para que se expanda por la red de manera más exitosa. 
+	\item Creación de una aplicación web: La aplicación web nos sirve para mostrar los resultados de la investigación de la red.
+	\item Realización de la documentación: Parte fundamental del proyecto en el cual se incluyen los detalles y explicaciones pertinentes del proyecto.
+
+\end{itemize}
+Por tema de privacidad no se subirá la red extraída al repositorio ni adjunta con el código. 
+Con los puntos anteriores definidos nos pusimos manos a la obra a la realización material de estas ideas. Se empezó a estudiar cómo se podía obtener la red.
+
+\imagen{IG-study_Logo.png}{Logo del proyecto}
+
+\section{Creación general de la red}
+
+Puesto que no habría proyecto si no se tienen datos sobre los que trabajar, el primer punto a trabajar con gran rapidez fue la obtención de la red. Del éxito de este primer punto dependía que fructificara el resto del proyecto.
+Antes de nada, se creó un perfil de Instagram que sería el encargado de obtener mediante la API los datos.
+Instagram tiene la opción de etiquetar las fotos con una ubicación, sin embargo, eso no nos ayudaba para buscar gente de Burgos puesto que mucha gente que pasa de manera temporal por Burgos puede subir ese tipo de fotos.
+Para buscar a la gente tuvimos que recurrir a las biografías que ponen. La gente suele escribir ahí distinta información:
+\begin{itemize}
+	\item Donde vive: Se suele poner la localidad o a veces algún apodo. En nuestro caso podría ser, por ejemplo: “La ciudad de Cid” o “Burgati”
+	\item Donde estudia: Los adolescentes escriben el instituto y los universitarios la universidad y la carrera. cual iba a ser el más efectivo algoritmo de clustering más efectivo.
+	\item Equipos a los que pertenecen: Un ejemplo de esto son los equipos infantiles de Futbol y Baloncesto. Por ejemplo: Vadillos CF, Burgos Promesas
+	\item Equipos de los que son aficionados: Los principales equipos deportivos de Burgos reúnen a gran cantidad de fans de la ciudad. Por ejemplo: San Pablo Burgos, Rugby Aparejadores Burgos, o Burgos CF
+	\item Frases con las que se sienten identificados: Descartamos esto puesto que no nos sirve de nada.
+	\item Descripción de aficiones o profesiones: Tampoco podemos sacar nada de utilidad con esta información, así que es descartada.
+
+\end{itemize}
+Se agrego de manera manual a 15 personas que servirían como punto de partida para la búsqueda del resto de burgaleses.
+La búsqueda se realizó de la siguiente forma:
+\begin{itemize}
+	\item 1. De los seguidores de los 15 primeros, se entraba en cada uno de los perfiles mirando la descripción, y si tenía alguna palabra clave que nos mostrase que esa persona es de Burgos, se le agregaba.
+	\item 2. Una vez se acabó con los 15 primeros, se buscaba entre los nuevos perfiles encontrados y así sucesivamente. Se hizo una búsqueda fue por niveles hasta que obtuvimos un número relevante.
+
+\end{itemize}
+Hay que tener en cuenta que esta búsqueda duró bastante, más de 2 semanas porque la API da de sí lo que da de sí.
+En esta etapa tuve que familiarizarme con la API de Python y como eran devueltos los datos, al igual que escribir un programa para la detección de palabras en las biografías. También que fuera buscando entre la gente aun no investigada.
+Es importante tener en cuenta que en los perfiles la red es dirigida, puedes seguir a alguien y que no te siga de vuelta y viceversa, se miró cuál de las 2 listas era más interesante mirar para ganar dinamismo y tiempo. Se llegó a la conclusión que cuando los perfiles son pequeños, tienden a seguir más que los que les siguen, por lo tanto, nos interesa buscar entre los seguidores de la gente de Burgos. Un ejemplo gráfico de esto es: En mi cuenta personal a mí solo me siguen mis amigos, puesto que no soy alguien famoso, y yo sigo a mis amigos más futbolistas y celebridades que no me van a seguir de vuelta. Es por esto por lo que las probabilidades de que me siga mayor porcentaje de gente relevante es mayor (nos quitamos de en medio famosos que no nos interesan).
+La tendencia de ganancia de las personas que van a formar parte de la red tiene una progresión bastante estable. Supongo que es porque el número de personas que puede investigar la api es estándar sin importar cuantos más haya en la lista de espera.
+
+\imagen{progresion.png}{Tendencia de ganancia de personas como nodos de la red}
+
+\section{Estudio por comunidades}
+
+Hay que dividir la red en comunidades que tengan una alta conectividad entre sus nodos. Para ello existen diversos algoritmos de los que podemos hacer uso. Aunque hablamos de unos cuantos, aunque al final la discusión se centró en solo en los dos siguientes. Cada uno tiene sus pros y sus contras:
+
+\subsection{Girvan-Newman}
+El funcionamiento de este algoritmo es sencillo. Calcula el betweeness de los distintos nodos de la red, y cuando encuentra el mayor valor, “corta” esa conexión. Así puede ir dividiendo la red en comunidades que dependen menos del betweeness. Cuando el grado de modularidad empieza a disminuir en las comunidades para.
+Los pros de usar este método son muchos, los expongo brevemente ahora:
+\begin{itemize}
+	\item Se estudia en la carrera, por lo tanto, su funcionamiento es conocido y no requiere de tiempo de aprendizaje
+	\item Los resultados que da son sorprendentemente buenos.
+	\item Viene integrada en la biblioteca Networkx, que usaremos para el estudio de redes.
+\end{itemize}
+Las contraprestaciones son pocas, pero de mucha relevancia:
+\begin{itemize}
+	\item -	Tiene un costo temporal alto (O(m2n)) en una red de n vértices y m aristas, por lo que es poco práctico para redes de más de unos cuantos miles de nodos. \cite{girvan-newman}
+\end{itemize}
+Para una red de Facebook de unos mil nodos funciona bien, y más o menos ahí estaría el límite. \cite{girvan-newman}
+\imagen{arbol.png}{Crea un árbol de decisión para ver los puntos óptimos de corte}
+\subsection{Louvain}
+Louvain es un algoritmo que entra en los conocidos como: “Maximización de la modularidad”.
+El funcionamiento es el siguiente: de manera iterativa optimiza comunidades locales hasta que la modularidad global no puede ser mejorada a través de modificaciones a la distribución de comunidades actual. \cite{wiki:louvain}
+
+El mayor pro que tiene es:
+\begin{itemize}
+	\item Las redes que puede soportar en un tiempo aceptable puede llegar a ser de varios cientos de miles de nodos con sus respectivas aristas.
+\end{itemize}
+Las contraprestaciones son:
+\begin{itemize}
+	\item No viene integrado de manera directa en Networkx, sino que requiere de una biblioteca paralela (Python-Louvain).
+	\item A veces tiene problema identificando comunidades menores de cierta escala, dependiendo del tamaño de la red. 
+	\item También presenta deficiencias cuando actúa sobre una red de alta modularidad, cercana al máximo absoluto. Esto no nos afecta a nuestra red.
+\end{itemize}
+Nuestra red es de 7493 nodos y 811132 aristas. Teniendo en cuenta estos valores, la decisión final por la red que manejamos es de usar Louvain como algoritmo para realizar las comunidades en un tiempo rápido.
+Como apunte sobre me gustaría añadir que, aunque si bien se ha dicho que es una contraprestación el tener que instalar Python-Louvain como una nueva biblioteca y tener que investigarla para aprender a usarla, la instalación es sencilla y se acopla perfectamente al funcionamiento de Networkx.
+
+Con Gephi se ha mostrado por pantalla los grafos de la red.
+
+El grafo con los nodos de manera aleatoria presenta una visión así:
+\imagen{grafoNeutro.png}{Imagen de un grafo neutro}
+Tras intentar usar varias distribuciones, se ha llegado a la conclusión que quien mejor lo muestra es Force Atlas2. Por tanto, recurriendo a Force Atlas 2 la imagen se nos queda de esta forma. Sin saber bien quien es cada nodo podemos vislumbrar una forma más o menos clara. Se nota que a la derecha hay una comunidad muy marcada en comparación con el gran tamaño del resto de nodos.
+\imagen{forceAtlas2basico.png}{Force Atlas 2 básico}
+Aunque cuando mejor podemos hacernos a la idea de cómo queda la red distribuida por comunidades es al asignarle un color a cada una de ellas. Vemos que estábamos en lo correcto sobre la comunidad de la derecha separada ligeramente del grueso de los nodos.
+\imagen{forceAtlas2basicoColores.png}{Force Atlas 2 básico con colores}
+Haciendo un estudio un poco más exhaustivo se sabe por qué esta comunidad separada no tiene tanta relación con el resto. Todo el mundo de esa comunidad pertenece a Aranda de Duero. Al incluir pueblos se ve perfectamente como ellos han creado su propia red interconectada. Viendo esto podríamos deducir que si a “pequeña escala” provincial hay diferencias tan importantes en la modularidad, en un territorio nacional o incluso internacional, se podría llegar a dibujar un mapa y las relaciones entre países basados en las conexiones que existen entre ellos.
+
+\section{Búsqueda de los usuarios más relevantes}
+Para la búsqueda de los usuarios más relevantes se pusieron sobre la mesa distintos aspectos a tener en cuenta. Cuál es la variable que queremos dar más relevancia, puesto que viendo como están fallando las medidas básicas que se usan actualmente para dar patrocinios, igual es momento de ir más allá con la información privilegiada que tenemos. Las marcas en la actualidad contratan a la gente basándose en el número de seguidores que alguien presenta. Esta visión no solo es errónea por la falta de cercanía que puedan crear dado a que no tienen personalización dependiendo de quien vaya a ver el anuncio, sino que además que ha quedado demostrado que existen redes muy extensas de bots que se pueden comprar para mostrar un número de seguidores totalmente falso que solo busca engrandecerse de manera embustera.
+Nosotros somos más partidarios de mostrar el producto de manera más personalizada, y mucho más cercana. Al final te marca mucho más lo que te dice un amigo sobre un producto o servicio, que lo que te pueda decir un anuncio de la televisión que es igual para todo el mundo. Cada persona necesita que le hablen en el lenguaje que está acostumbrado a oír y con las experiencias que vive en su día a día.
+Se pueden aplicar distintas técnicas de centralidad:
+\begin{itemize}
+	\item Betweeness: Da valores a las aristas, siendo de mayor peso las que son más usadas para crear caminos entre los distintos nodos. La que mayor betweeness tiene, tiene un mayor número de caminos que conectan nodos de distintas comunidades normalmente.
+	\item PageRank: Algoritmo usado por los motores de búsqueda para dar importancia a los paginas dependiendo de cuantas y como de importantes eran las páginas que le apuntaban.
+	\item Closeness: Es la suma reciproca de la distancia de los caminos más cortos de un nodo con el resto de los nodos de la red.
+	\item Hubs y autoridades: Muestra quien son los nodos que mayor número de aristas tienen distribuidas por la red y quien tiene mayor número de aristas viniendo de la red. 
+\end{itemize}
+Por la que me he decantado es por PageRank como medida de centralidad más adecuada para este estudio. Es capaz de valorar cada nodo con la importancia que tiene quitando peso a posibles bots que solo sigan a gente y así restando importancia los “influencers” que requieran de estas técnicas para aumentar su número de seguidores.
+
+\section{Estudio de los Hashtags}
+Los Hashtags como modo de sintetizar ideas de los usuarios surgió en Twitter. La opción de poderles pulsar y que te mostrase todos los tuits sobre el tema que usaban ese hashtag ofrecía una forma de crear y agrupar cualquier ocurrencia, sin importar la relevancia de este.
+Rápidamente se puso en uso para apoyar campañas y darles visibilidad. Como la gente abrazó esta idea realmente bien, el resto de redes sociales han incluido esta funcionalidad con mayor o menor éxito. Por instinto la gente lo usa en cualquier sitio, convirtiéndose en una forma de sintetizar ideas, que las nuevas generaciones han incluido como forma de comunicación en su día a día a través de internet.
+Por estos motivos nos pareció muy interesante el incluir un estudio de los hashtags que más se usan en la comunidad que estamos estudiando puesto que eso nos da una idea de los intereses y características de las comunidades que estamos estudiando.
+En este punto he tenido que realizar una limpieza de los datos. Por ejemplo, una misma persona puede ser que haya incluido el mismo hashtag en mil publicaciones, pero nadie más lo éste usando y sin embargo 100 personas hayan usado un mismo hashtag. Es por eso, que, aunque un hashtag aparezca muchas veces, hay que darle un valor especial dependiendo de quien venga y de cuantas personas venga.
+La valoración de los hashtags se ha hecho haciendo uso de los puntos anteriores:
+\begin{itemize}
+	\item Pagerank: Porque puede ser que lo nodos con mayor relevancia lo sean en parte por la información que trasmiten. Queremos aprovecharnos de esa sabiduría que publican.
+	\item Comunidades: Los hashtags por comunidades nos ayudan a encontrar palabras y gustos más específicos.
+\end{itemize}
+\section{Creación de una Web}
+Para mostrar los resultados de la aplicación se hará uso de una web creada con Flask.
+Se usa Flask por:
+
+\begin{itemize}
+	\item Tiene una forma de trabajar muy limpia.
+	\item La curva de aprendizaje es muy corta.
+	\item Tiene una extensa documentación.
+	\item Al usar el lenguaje Python se integra perfectamente con el resto del proyecto.
+	\item Su integración con todo el resto del proyecto desarrollado en Python.
+\end{itemize}
+Se muestran los datos tanto de los nodos más relevantes con sus respectivos hashtags como de las distintas comunidades y la información obtenida de ella.
+
+\section{Realización del proyecto}
+El proyecto está escrito en .odt para una mayor facilidad de transmisión entre el alumno y los tutores. Una vez esté la versión final pulida se pasará a LaTeX para que tenga un diseño más formal y profesional.
+
+\section{Creación de una Web}
+Como problemas encontrados estuvieron:
+
+\begin{itemize}
+	\item Tiempo en la extracción de los datos: Se pidió ayuda al servidor del departamento de informática. Se nos concedió un espacio, pero al no poder instalar screen o no haber ninguna base de datos que pudiera utilizar, tuve que usar mi ordenador personal como servidor teniéndolo encendido durante el tiempo necesario que requiriera hasta alcanzar un buen número de datos. Desde aquí quiero agradecer a Alvar su colaboración para facilitarme el acceso.
+	\item Problema a la hora de extraer los datos de la base de datos: Al final no se pudo automatizar esta parte y hay que hacer la extracción de manera manual para cambiarla de directorio, para poder empezar con la fase de investigación.
+\end{itemize}
